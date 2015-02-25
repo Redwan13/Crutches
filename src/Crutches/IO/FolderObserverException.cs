@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Crutches.IO
 {
+    /// <summary>
+    /// Exception, that occures during folder observation
+    /// </summary>
     [Serializable]
     public class FolderObserverException : CrutchException
     {

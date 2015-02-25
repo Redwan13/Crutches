@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace Crutches.IO
 {
+    /// <summary>
+    /// Internal cycle of all FolderObservers
+    /// </summary>
     class FolderObserverCore
     {
         #region Comparers

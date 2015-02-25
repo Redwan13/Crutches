@@ -28,15 +28,32 @@ namespace Crutches.IO
 
         public SearchOption SearchOption { get; private set; }
 
+        /// <summary>
+        /// Occures when folder starts observing
+        /// </summary>
         public event ObservingEventHandler OnStartObserving;
+        /// <summary>
+        /// Occures when folder stops observing
+        /// </summary>
         public event ObservingEventHandler OnStopObserving;
+        /// <summary>
+        /// Occures when exception is thrown during observing
+        /// </summary>
         public event ObservingErrorEventHandler OnErrorObserving;
+        /// <summary>
+        /// Occures when file matching filter appears in observed folder
+        /// </summary>
         public event FileSystemEventHandler OnFileCreated;
 
 
         internal readonly ISet<string> RegisteredFiles = new HashSet<string>();
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path">Folder to observe</param>
+        /// <param name="searchPattern">Regex pattern to filter files in folder</param>
+        /// <param name="searchOption">Search option</param>
         public FolderObserver(string path, string searchPattern, SearchOption searchOption = SearchOption.AllDirectories)
         {
             if (path == null) throw new ArgumentNullException("path");
@@ -47,6 +64,9 @@ namespace Crutches.IO
             SearchOption = searchOption;
         }
         
+        /// <summary>
+        /// Start observing folder
+        /// </summary>
         public void StartObserving()
         {
             Core.RegisterSource(this);
@@ -54,6 +74,10 @@ namespace Crutches.IO
             if (OnStartObserving != null) OnStartObserving(this, new ObservingEventArgs(SourceFolder.FullName));
         }
 
+
+        /// <summary>
+        /// Stop observing folder
+        /// </summary>
         public void StopObserving()
         {
             Core.ForgetSource(this);

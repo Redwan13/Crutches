@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace Crutches.IO
 {
+    /// <summary>
+    /// Static utility methods to work with fs
+    /// </summary>
     public static class FileSystemUtils
     {
         /// <summary>
@@ -32,6 +35,13 @@ namespace Crutches.IO
             return false;//file is not locked
         }
 
+        /// <summary>
+        /// Enumerate files matching regex in folder 
+        /// </summary>
+        /// <param name="dir">Folder to search in</param>
+        /// <param name="pattern">Regex to match</param>
+        /// <param name="searchOption">Search options</param>
+        /// <returns></returns>
         public static IEnumerable<FileInfo> EnumerateFiles(this DirectoryInfo dir, Regex pattern, SearchOption searchOption = SearchOption.AllDirectories)
         {
             if (dir == null) throw new ArgumentNullException("dir");

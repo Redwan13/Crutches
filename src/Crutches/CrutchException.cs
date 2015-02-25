@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Crutches
 {
+    /// <summary>
+    /// Base exception type for Crutches
+    /// </summary>
     public class CrutchException :Exception
     {
         public CrutchException() { }
